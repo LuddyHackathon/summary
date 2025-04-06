@@ -1,0 +1,14 @@
+services:
+  summary:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: summary
+    expose:
+      - 65535:65535
+    networks:
+      - careerspeak
+
+networks:
+  careerspeak:
+    external: true
