@@ -2,6 +2,7 @@ import sys
 
 import flask
 from flask import request
+from summarise_and_action import get_summary_and_actions
 
 app = flask.Flask(__name__)
 
@@ -9,12 +10,10 @@ app = flask.Flask(__name__)
 @app.route('/', methods=['POST'])
 def summarise():
     args = request.args
-    voice_file = args.get('voice_file')
+    text = args.get('text')
 
-    audio_model = whisper.load_model('small.en')
+    result = get_summary_and_actions(text)
 
-    result = audio_model.summary(f'/voice/{voice_file}',
-                                    language='english')
     print(result, file=sys.stderr)
 
     return result['text']
