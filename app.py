@@ -16,7 +16,7 @@ def summarise():
 
     print(result, file=sys.stderr)
 
-    return result['text']
+    return result
 
 
 if __name__ == '__main__':
